@@ -23,7 +23,7 @@ var app = new Vue({
             }
             if(this.control==false||this.movies.length==0)
             {
-                fetch("http://www.omdbapi.com/?i=tt3896198&apikey=6d14b00&t="+e.target.value)
+                fetch("https://www.omdbapi.com/?i=tt3896198&apikey=6d14b00&t="+e.target.value)
                 .then(movies => movies.json())
                 .then(movies=> {
                     if(movies.Response=="True")
