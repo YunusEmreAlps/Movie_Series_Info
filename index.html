@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie or Tv Series Library</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- css -->
+    <link rel="stylesheet" href="index.css"/>
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    
+</head>
+<body>
+    
+    <div class="container w-100 p-5" id="app">
+        <div class="form-group ldesgn">
+            <h2 class="text-dark text-center display-3 pb-3">Movies or Tv Series</h2>
+            <div class="alert alert-danger" role="alert"  v-if="nfound==true">
+                Not found
+            </div>
+            <div class="alert alert-info" role="alert"  v-if="movies.length==0">
+                Task list is empty
+             </div>
+             <div class="alert alert-danger" role="alert"  v-if="control==true && movies.length!=0 ">
+                 This has on your list.
+             </div>
+            <input class="form-control text-dark" type="text" @keypress.enter="search($event)" placeholder="Enter Movies or Tv Series"><br/>
+            <ol class="form-check text-dark">
+                <li v-for="movie in movies">
+                        <span class="text-left text-dark font-weight-bold" style="font-size:36px;" v-text="movie.Title"></span> ({{movie.Year}}) 
+                        <i  type="button" class="material-icons float-right text-danger" v-on:click="delbut(movie.Title)">&#xe872;</i>
+                        <i class="fa fa-imdb float-right" style="font-size:24px" data-toggle="tooltip" v-bind:title="movie.imdbRating"></i><br/>
+                        <p  class="text-left text-dark pb-1 pt-1" style="font-size:16px;">{{movie.Rated}} | {{movie.Runtime}} | {{movie.Genre}} | {{movie.Released}}</p>
+                        <p class="text-left text-dark pt-2 pb-2" style="font-size:16px;"v-text="movie.Plot"></p>
+
+                        
+                        <span class="text-left text-dark font-weight-bold" style="font-size:16px;">Director</span>:<span style="font-size:16px;">{{movie.Director}}</span><br/>
+                        <span class="text-left text-dark font-weight-bold" style="font-size:16px;">Writers</span>:<span style="font-size:16px;">{{movie.Writer}}</span><br/>
+                        <span class="text-left text-dark font-weight-bold" style="font-size:16px;">Actors</span>:<span style="font-size:16px;">{{movie.Actors}}</span><br/>
+                        
+                        <img  v-bind:src="movie.Poster"><br/>
+
+                        <hr/>
+                </li>
+
+            </ol>
+        </div>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
