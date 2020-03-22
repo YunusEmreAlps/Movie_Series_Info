@@ -6,10 +6,10 @@ var app = new Vue({
         movies:[],
         index:-1,
         control:false,
-        nfound:false
-
+        nfound:false,
+        totseason:false
     },
-    methods : {   
+    methods : {
         search(e){
             for(var i=0; i<this.movies.length; i++)
             {
@@ -36,19 +36,18 @@ var app = new Vue({
                                 this.control=true;
                                 break;
                             }
-                        }  
-                        if(this.control==false ||this.movies.length==0)
-                        {   
-                            this.movies.push(movies); 
-                            control=false;       
                         }
-                        console.log(this.movies)  
+                        if(this.control==false ||this.movies.length==0)
+                        {
+                            this.movies.push(movies);
+                            control=false;
+                        }
                     }
                     else if(movies.Response=="False"){
                         this.nfound=true;
                         this.control=null;
                     }
-                });       
+                });
             }
 
         },
@@ -65,7 +64,13 @@ var app = new Vue({
             {
                 this.movies.splice(this.index,1);
             }
-        }
+        },
+        totsea(seas){
+           if(seas=="series")
+              return true
+           else
+               return false;
+       }
     }
-    
+
 });

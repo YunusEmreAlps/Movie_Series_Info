@@ -13,10 +13,10 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <!-- development version, includes helpful console warnings -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    
+
 </head>
 <body>
-    
+
     <div class="container w-100 p-5" id="app">
         <div class="form-group ldesgn">
             <h2 class="text-dark text-center display-3 pb-3">Movies or Tv Series</h2>
@@ -32,17 +32,16 @@
             <input class="form-control text-dark" type="text" @keypress.enter="search($event)" placeholder="Enter Movies or Tv Series"><br/>
             <ol class="form-check text-dark">
                 <li v-for="movie in movies">
-                        <span class="text-left text-dark font-weight-bold" style="font-size:36px;" v-text="movie.Title"></span> ({{movie.Year}}) 
+                        <span class="text-left text-dark font-weight-bold" style="font-size:36px;" v-text="movie.Title"></span> ({{movie.Year}})
                         <i  type="button" class="material-icons float-right text-danger" v-on:click="delbut(movie.Title)">&#xe872;</i>
                         <i class="fa fa-imdb float-right" style="font-size:24px" data-toggle="tooltip" v-bind:title="movie.imdbRating"></i><br/>
-                        <p  class="text-left text-dark pb-1 pt-1" style="font-size:16px;">{{movie.Rated}} | {{movie.Runtime}} | {{movie.Genre}} | {{movie.Released}}</p>
+                        <p  class="text-left text-dark pb-1 pt-1" style="font-size:16px;">{{movie.Rated}} | {{movie.Runtime}} | {{movie.Genre}} | {{movie.Released}} | {{movie.Type}}<span v-if="totsea(movie.Type)"> | {{movie.totalSeasons}} Season</span></p>
                         <p class="text-left text-dark pt-2 pb-2" style="font-size:16px;"v-text="movie.Plot"></p>
 
-                        
                         <span class="text-left text-dark font-weight-bold" style="font-size:16px;">Director</span>:<span style="font-size:16px;">{{movie.Director}}</span><br/>
                         <span class="text-left text-dark font-weight-bold" style="font-size:16px;">Writers</span>:<span style="font-size:16px;">{{movie.Writer}}</span><br/>
-                        <span class="text-left text-dark font-weight-bold" style="font-size:16px;">Actors</span>:<span style="font-size:16px;">{{movie.Actors}}</span><br/>
-                        
+                        <span class="text-left text-dark font-weight-bold" style="font-size:16px;">Actors</span>:<span style="font-size:16px;">{{movie.Actors}}</span><br/><br/>
+
                         <img  v-bind:src="movie.Poster"><br/>
 
                         <hr/>
