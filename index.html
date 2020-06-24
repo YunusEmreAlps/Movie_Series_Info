@@ -77,12 +77,12 @@
                                 ({{movie.Year}})
                               </span> 
                             </button>
-                            <div class="mb-0 d-block">
-                              <span class="text-light float-right">
+                            <div class="mb-0">
+                              <span class="text-light d-block float-right">
                                 <i type="button" class="material-icons float-right text-danger" v-on:click="delbut(movie.Title)">&#xe872;</i>
-                                <i class="fa fa-star text-warning"  aria-hidden="true"></i> {{movie.imdbRating}}/10 &nbsp;
+                                <i class="fa fa-star text-warning"></i> {{movie.imdbRating}}/10 &nbsp;
                               </span>  
-                            </div> 
+                            </div>
                           </h5>
                         </div>
                         <div v-bind:id="movie.imdbID" class="collapse show">
