@@ -1,3 +1,4 @@
+const STORAGE_KEY = "movie2-storage";
 // Vue
 var app = new Vue({
     el:"#app",
@@ -8,6 +9,9 @@ var app = new Vue({
         control:false,
         nfound:false,
         totseason:false
+    },
+    created() {
+        this.movies = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
     },
     methods : {
         search(e){
@@ -40,6 +44,7 @@ var app = new Vue({
                         if(this.control==false ||this.movies.length==0)
                         {
                             this.movies.push(movies);
+                            localStorage.setItem(STORAGE_KEY, JSON.stringify(this.movies));
                             control=false;
                         }
                     }
@@ -63,6 +68,7 @@ var app = new Vue({
             if(this.index!=-1)
             {
                 this.movies.splice(this.index,1);
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(this.movies));
             }
         },
         totsea(seas){

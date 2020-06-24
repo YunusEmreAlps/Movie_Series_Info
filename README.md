@@ -1,3 +1,3 @@
-# Vue-Movieinfo-App
+# Vue.js Todos-Example
 
-[You Can Try](https://yunusemrealps.github.io/Vue-Movieinfo-App/index.html)
+[You can try](https://yunusemrealps.github.io/Todos-Example/index.html)
